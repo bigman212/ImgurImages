@@ -1,4 +1,4 @@
-package com.bigman212.imgur
+package com.bigman212.imgur.gallery
 
 import android.content.Context
 import android.os.Bundle

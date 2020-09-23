@@ -1,7 +1,8 @@
-package com.bigman212.imgur
+package com.bigman212.imgur.gallery
 
 import android.view.View
 import androidx.core.content.ContextCompat
+import com.bigman212.imgur.R
 import com.bigman212.imgur.databinding.ItemImgurImageBinding
 import com.bigman212.imgur.remote.pojo.ImageInfo
 import com.bumptech.glide.Glide
