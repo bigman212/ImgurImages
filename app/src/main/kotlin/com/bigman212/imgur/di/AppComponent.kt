@@ -11,7 +11,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = [ApiModule::class]
+    modules = [ApiModule::class, FragmentsModule::class]
 )
 interface AppComponent : AppProvider {
 

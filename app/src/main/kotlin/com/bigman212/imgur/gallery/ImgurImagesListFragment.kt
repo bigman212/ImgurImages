@@ -3,7 +3,10 @@ package com.bigman212.imgur.gallery
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import com.bigman212.imgur.BaseFragment
+import com.bigman212.imgur.R
 import com.bigman212.imgur.common.viewBinding
+import com.bigman212.imgur.common.viewModelWithProvider
 import com.bigman212.imgur.databinding.FragmentImgurImagesListBinding
 import com.bigman212.imgur.di.AppComponent
 import com.bigman212.imgur.remote.ImgurApi
@@ -17,21 +20,20 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 import javax.inject.Inject
+import javax.inject.Provider
 
 
-class ImgurImagesListFragment : BaseFragment(R.layout.fragment_imgur_images_list) {
+class ImgurImagesListFragment @Inject constructor(
+    private val viewModelProvider: Provider<ImgurGalleryViewModel>
+) : BaseFragment(R.layout.fragment_imgur_images_list) {
     @Inject
     internal lateinit var api: ImgurApi
 
     private val binding by viewBinding<FragmentImgurImagesListBinding>()
+    private val viewModel by viewModelWithProvider { viewModelProvider.get() }
 
     private val section = Section()
     private val adapter = GroupAdapter<GroupieViewHolder>()
-
-    companion object {
-        @JvmStatic
-        fun newInstance(): ImgurImagesListFragment = ImgurImagesListFragment()
-    }
 
     override fun onAttach(context: Context) {
         (appComponent as AppComponent).inject(this)
