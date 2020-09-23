@@ -4,13 +4,13 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import com.bigman212.imgur.R
 import com.bigman212.imgur.databinding.ItemImgurImageBinding
-import com.bigman212.imgur.remote.pojo.ImageInfo
+import com.bigman212.imgur.remote.pojo.ImgurImageInfo
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.xwray.groupie.viewbinding.BindableItem
 import java.util.*
 
-class ImgurImageListItem(private val itemToBind: ImageInfo) : BindableItem<ItemImgurImageBinding>() {
+class ImgurImageListItem(private val itemToBind: ImgurImageInfo) : BindableItem<ItemImgurImageBinding>() {
 
     override fun getId(): Long {
         return UUID.randomUUID().mostSignificantBits and Long.MAX_VALUE
