@@ -1,6 +1,8 @@
-package com.bigman212
+package com.bigman212.imgur
 
 import android.app.Application
+import com.bigman212.imgur.di.AppComponent
+import com.bigman212.imgur.di.AppProvider
 import timber.log.Timber
 
 class App : Application() {

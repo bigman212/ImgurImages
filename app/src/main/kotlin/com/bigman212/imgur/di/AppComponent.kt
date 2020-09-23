@@ -1,15 +1,22 @@
-package com.bigman212
+package com.bigman212.imgur.di
 
 import android.app.Application
+import com.bigman212.imgur.ImgurImagesListFragment
+import com.bigman212.imgur.MainActivity
+import com.bigman212.imgur.remote.di.module.ApiModule
 import dagger.BindsInstance
 import dagger.Component
+import javax.inject.Singleton
 
+@Singleton
 @Component(
-    modules = []
+    modules = [ApiModule::class]
 )
 interface AppComponent : AppProvider {
 
     fun inject(obj: MainActivity)
+
+    fun inject(obj: ImgurImagesListFragment)
 
     @Component.Factory
     interface Factory {

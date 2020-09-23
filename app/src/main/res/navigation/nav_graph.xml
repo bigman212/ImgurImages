@@ -11,7 +11,7 @@
 
     <fragment
         android:id="@+id/nav_imgur_images_list_fragment"
-        android:name="com.bigman212.ImgurImagesListFragment"
+        android:name="com.bigman212.imgur.ImgurImagesListFragment"
         tools:layout="@layout/fragment_imgur_images_list">
 
         <!--        <action-->

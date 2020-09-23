@@ -1,4 +1,4 @@
-package com.bigman212
+package com.bigman212.imgur
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

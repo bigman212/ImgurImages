@@ -1,7 +1,8 @@
-package com.bigman212
+package com.bigman212.imgur
 
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import com.bigman212.imgur.di.AppProvider
 
 open class BaseActivity : AppCompatActivity {
     constructor() : super()

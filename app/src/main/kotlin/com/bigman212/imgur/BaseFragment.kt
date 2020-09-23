@@ -1,4 +1,4 @@
-package com.bigman212
+package com.bigman212.imgur
 
 import android.widget.Toast
 import androidx.annotation.LayoutRes
@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import com.bigman212.imgur.di.AppProvider
 
 open class BaseFragment : Fragment {
     constructor() : super()
