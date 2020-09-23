@@ -22,7 +22,7 @@ data class ImageTag(
     @field:Json(name = "thumbnail_hash")
     val thumbnailHash: Any?,
     @field:Json(name = "accent")
-    val accent: String,
+    val accent: String?,
     @field:Json(name = "background_is_animated")
     val backgroundIsAnimated: Boolean,
     @field:Json(name = "thumbnail_is_animated")

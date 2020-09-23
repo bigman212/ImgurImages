@@ -1,6 +1,7 @@
 package com.bigman212.imgur.remote
 
-import com.bigman212.imgur.remote.pojo.ImgurGalleryImage
+import com.bigman212.imgur.remote.pojo.ImgurGallery
+import com.bigman212.imgur.remote.pojo.StandardListResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -14,5 +15,5 @@ interface ImgurApi {
         @Path("page") page: Int,
 
         @Query("showViral") showViral: Boolean = true,
-    ): Single<List<ImgurGalleryImage>>
+    ): Single<StandardListResponse<ImgurGallery>>
 }

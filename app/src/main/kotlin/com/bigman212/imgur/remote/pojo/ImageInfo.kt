@@ -8,9 +8,9 @@ data class ImageInfo(
     @field:Json(name = "id")
     val id: String,
     @field:Json(name = "title")
-    val title: Any?,
+    val title: String?,
     @field:Json(name = "description")
-    val description: Any?,
+    val description: String?,
     @field:Json(name = "datetime")
     val datetime: Int,
     @field:Json(name = "type")
@@ -38,45 +38,23 @@ data class ImageInfo(
     @field:Json(name = "account_url")
     val accountUrl: Any?,
     @field:Json(name = "account_id")
-    val accountId: Any?,
+    val accountId: Int?,
     @field:Json(name = "is_ad")
     val isAd: Boolean,
     @field:Json(name = "in_most_viral")
     val inMostViral: Boolean,
-    @field:Json(name = "has_sound")
-    val hasSound: Boolean,
     @field:Json(name = "tags")
     val tags: List<Any>,
     @field:Json(name = "ad_type")
     val adType: Int,
     @field:Json(name = "ad_url")
     val adUrl: String,
-    @field:Json(name = "edited")
-    val edited: String,
     @field:Json(name = "in_gallery")
     val inGallery: Boolean,
+    @field:Json(name = "deletehash")
+    val deletehash: String?,
+    @field:Json(name = "name")
+    val name: String?,
     @field:Json(name = "link")
-    val link: String,
-    @field:Json(name = "mp4_size")
-    val mp4Size: Int,
-    @field:Json(name = "mp4")
-    val mp4: String,
-    @field:Json(name = "gifv")
-    val gifv: String,
-    @field:Json(name = "hls")
-    val hls: String,
-    @field:Json(name = "processing")
-    val processing: Processing,
-    @field:Json(name = "comment_count")
-    val commentCount: Any?,
-    @field:Json(name = "favorite_count")
-    val favoriteCount: Any?,
-    @field:Json(name = "ups")
-    val ups: Any?,
-    @field:Json(name = "downs")
-    val downs: Any?,
-    @field:Json(name = "points")
-    val points: Any?,
-    @field:Json(name = "score")
-    val score: Any?
+    val link: String
 )
