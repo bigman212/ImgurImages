@@ -10,6 +10,7 @@ import com.bigman212.imgur.common.viewBinding
 import com.bigman212.imgur.common.viewModelWithProvider
 import com.bigman212.imgur.databinding.FragmentImgurImagesListBinding
 import com.bigman212.imgur.di.AppComponent
+import com.bigman212.imgur.gallery.adapter.ImgurGalleryImageItem
 import com.bigman212.imgur.remote.ImgurApi
 import com.bigman212.imgur.remote.pojo.ImgurImageInfo
 import com.xwray.groupie.GroupAdapter
@@ -19,7 +20,7 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 
-class ImgurImagesListFragment @Inject constructor(
+class ImgurGalleryFragment @Inject constructor(
     private val viewModelProvider: Provider<ImgurGalleryViewModel>
 ) : BaseFragment(R.layout.fragment_imgur_images_list) {
     @Inject
@@ -59,6 +60,6 @@ class ImgurImagesListFragment @Inject constructor(
 
 
     private fun renderContent(content: List<ImgurImageInfo>) {
-        section.update(content.map(::ImgurImageListItem))
+        section.update(content.map(::ImgurGalleryImageItem))
     }
 }

@@ -7,8 +7,6 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class ImgurGalleryRepository @Inject constructor(private val api: ImgurApi) {
-
-
     fun getGallery(
         section: ImgurGallerySection = ImgurGallerySection.HOT,
         sorting: ImgurGallerySorting = ImgurGallerySorting.VIRAL

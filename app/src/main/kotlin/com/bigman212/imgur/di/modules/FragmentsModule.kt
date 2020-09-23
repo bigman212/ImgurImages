@@ -3,7 +3,7 @@ package com.bigman212.imgur.di.modules
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import com.bigman212.imgur.di.AppFragmentFactory
-import com.bigman212.imgur.gallery.ImgurImagesListFragment
+import com.bigman212.imgur.gallery.ImgurGalleryFragment
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -15,6 +15,6 @@ interface FragmentsModule {
 
     @Binds
     @IntoMap
-    @FragmentKey(ImgurImagesListFragment::class)
-    fun bindImgurImagesFragment(fragment: ImgurImagesListFragment): Fragment
+    @FragmentKey(ImgurGalleryFragment::class)
+    fun bindImgurImagesFragment(fragment: ImgurGalleryFragment): Fragment
 }

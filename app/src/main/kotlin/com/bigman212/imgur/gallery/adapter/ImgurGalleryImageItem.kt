@@ -1,4 +1,4 @@
-package com.bigman212.imgur.gallery
+package com.bigman212.imgur.gallery.adapter
 
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -10,7 +10,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.xwray.groupie.viewbinding.BindableItem
 import java.util.*
 
-class ImgurImageListItem(private val itemToBind: ImgurImageInfo) : BindableItem<ItemImgurImageBinding>() {
+class ImgurGalleryImageItem(private val itemToBind: ImgurImageInfo) : BindableItem<ItemImgurImageBinding>() {
 
     override fun getId(): Long {
         return UUID.randomUUID().mostSignificantBits and Long.MAX_VALUE
