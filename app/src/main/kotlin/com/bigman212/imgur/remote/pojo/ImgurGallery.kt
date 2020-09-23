@@ -74,7 +74,7 @@ data class ImgurGallery(
 //    @field:Json(name = "include_album_ads")
 //    val includeAlbumAds: Boolean?,
     @field:Json(name = "images")
-    val images: List<ImageInfo>?
+    val images: List<ImgurImageInfo>?
 //    @field:Json(name = "ad_config")
 //    val adConfig: AdConfig
 )
