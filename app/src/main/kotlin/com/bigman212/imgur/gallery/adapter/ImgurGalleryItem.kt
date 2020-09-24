@@ -4,8 +4,8 @@ import android.graphics.drawable.Drawable
 import android.view.View
 import androidx.core.view.isVisible
 import com.bigman212.imgur.R
+import com.bigman212.imgur.data.remote.pojo.ImgurGallery
 import com.bigman212.imgur.databinding.ItemImgurImageBinding
-import com.bigman212.imgur.remote.pojo.ImgurGallery
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException

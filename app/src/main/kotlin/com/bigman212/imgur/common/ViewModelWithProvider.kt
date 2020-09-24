@@ -29,7 +29,7 @@ inline fun <reified T : ViewModel> Fragment.viewModelWithProvider(
 }
 
 inline fun <T> Fragment.observe(liveData: LiveData<T>, crossinline block: (T) -> Unit) {
-    liveData.observe(this) {
+    liveData.observe(viewLifecycleOwner) {
         block.invoke(it)
     }
 }

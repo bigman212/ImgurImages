@@ -1,4 +1,4 @@
-package com.bigman212.imgur.gallery.data
+package com.bigman212.imgur.data
 
 enum class ImgurGallerySection {
     HOT, TOP

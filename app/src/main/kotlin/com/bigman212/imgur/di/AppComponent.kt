@@ -2,10 +2,10 @@ package com.bigman212.imgur.di
 
 import android.app.Application
 import com.bigman212.imgur.MainActivity
+import com.bigman212.imgur.data.remote.di.modules.ApiModule
 import com.bigman212.imgur.di.modules.FragmentsModule
 import com.bigman212.imgur.gallery.ImgurGalleryFragment
 import com.bigman212.imgur.gallery_image.ImgurGalleryImageFragment
-import com.bigman212.imgur.remote.di.modules.ApiModule
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton

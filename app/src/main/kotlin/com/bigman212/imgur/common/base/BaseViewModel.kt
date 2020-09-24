@@ -1,4 +1,4 @@
-package com.bigman212.imgur.common
+package com.bigman212.imgur.common.base
 
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable

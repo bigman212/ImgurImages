@@ -45,5 +45,5 @@
 
 -dontwarn org.jetbrains.annotations.**
 -keep class kotlin.Metadata { *; }
--keepclassmembers class com.bigman212.imgur.remote.pojo.** { <init>(...); <fields>;}
+-keepclassmembers class com.bigman212.imgur.data.remote.pojo.** { <init>(...); <fields>;}
 -keep @androidx.support.annotation.Keep class * {*};

@@ -1,8 +1,8 @@
-package com.bigman212.imgur.gallery_image.data
+package com.bigman212.imgur.data
 
-import com.bigman212.imgur.remote.ImgurApi
-import com.bigman212.imgur.remote.pojo.GalleryComment
-import com.bigman212.imgur.remote.pojo.StandardListResponse
+import com.bigman212.imgur.data.remote.ImgurApi
+import com.bigman212.imgur.data.remote.pojo.GalleryComment
+import com.bigman212.imgur.data.remote.pojo.StandardListResponse
 import io.reactivex.Single
 import javax.inject.Inject
 

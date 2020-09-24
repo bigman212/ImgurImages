@@ -1,4 +1,4 @@
-package com.bigman212.imgur.remote.pojo
+package com.bigman212.imgur.data.remote.pojo
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

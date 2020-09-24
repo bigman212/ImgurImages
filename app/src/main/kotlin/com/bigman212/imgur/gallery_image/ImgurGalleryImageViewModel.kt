@@ -1,12 +1,12 @@
 package com.bigman212.imgur.gallery_image
 
 import androidx.lifecycle.MutableLiveData
-import com.bigman212.imgur.common.BaseViewModel
+import com.bigman212.imgur.common.base.BaseViewModel
 import com.bigman212.imgur.common.extensions.ioSubscribe
 import com.bigman212.imgur.common.extensions.uiObserve
+import com.bigman212.imgur.data.remote.pojo.GalleryComment
+import com.bigman212.imgur.data.remote.pojo.ImgurGallery
 import com.bigman212.imgur.gallery_image.domain.ImgurGalleryImageUseCase
-import com.bigman212.imgur.remote.pojo.GalleryComment
-import com.bigman212.imgur.remote.pojo.ImgurGallery
 import io.reactivex.Single
 import timber.log.Timber
 import javax.inject.Inject

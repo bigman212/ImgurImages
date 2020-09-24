@@ -2,8 +2,8 @@ package com.bigman212.imgur.gallery_image.adapter
 
 import android.view.View
 import com.bigman212.imgur.R
+import com.bigman212.imgur.data.remote.pojo.GalleryComment
 import com.bigman212.imgur.databinding.ItemGalleryCommentBinding
-import com.bigman212.imgur.remote.pojo.GalleryComment
 import com.xwray.groupie.viewbinding.BindableItem
 
 class ImgurGalleryCommentItem(private val itemToBind: GalleryComment) : BindableItem<ItemGalleryCommentBinding>() {

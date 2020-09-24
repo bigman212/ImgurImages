@@ -1,4 +1,4 @@
-package com.bigman212.imgur.di
+package com.bigman212.imgur.common
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory

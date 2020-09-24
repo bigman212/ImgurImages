@@ -1,6 +1,6 @@
-package com.bigman212.imgur.remote.di.modules
+package com.bigman212.imgur.data.remote.di.modules
 
-import com.bigman212.imgur.remote.interceptors.AuthInterceptor
+import com.bigman212.imgur.data.remote.interceptors.AuthInterceptor
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides

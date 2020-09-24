@@ -3,6 +3,7 @@ package com.bigman212.imgur
 import android.os.Bundle
 import androidx.fragment.app.FragmentFactory
 import androidx.navigation.findNavController
+import com.bigman212.imgur.common.base.BaseActivity
 import com.bigman212.imgur.di.AppComponent
 import javax.inject.Inject
 

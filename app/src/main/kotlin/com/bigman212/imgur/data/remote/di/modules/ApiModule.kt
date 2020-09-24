@@ -1,6 +1,6 @@
-package com.bigman212.imgur.remote.di.modules
+package com.bigman212.imgur.data.remote.di.modules
 
-import com.bigman212.imgur.remote.ImgurApi
+import com.bigman212.imgur.data.remote.ImgurApi
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

@@ -1,4 +1,4 @@
-package com.bigman212.imgur.remote.interceptors
+package com.bigman212.imgur.data.remote.interceptors
 
 import com.bigman212.imgur.BuildConfig
 import okhttp3.Interceptor

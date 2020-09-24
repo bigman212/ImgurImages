@@ -1,9 +1,9 @@
-package com.bigman212.imgur.remote
+package com.bigman212.imgur.data.remote
 
-import com.bigman212.imgur.remote.pojo.GalleryComment
-import com.bigman212.imgur.remote.pojo.ImgurGallery
-import com.bigman212.imgur.remote.pojo.StandardListResponse
-import com.bigman212.imgur.remote.pojo.StandardResponse
+import com.bigman212.imgur.data.remote.pojo.GalleryComment
+import com.bigman212.imgur.data.remote.pojo.ImgurGallery
+import com.bigman212.imgur.data.remote.pojo.StandardListResponse
+import com.bigman212.imgur.data.remote.pojo.StandardResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path

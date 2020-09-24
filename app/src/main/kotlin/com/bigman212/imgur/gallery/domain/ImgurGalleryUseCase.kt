@@ -1,9 +1,9 @@
 package com.bigman212.imgur.gallery.domain
 
-import com.bigman212.imgur.gallery.data.ImgurGalleryRepository
-import com.bigman212.imgur.gallery.data.ImgurGallerySection
-import com.bigman212.imgur.remote.pojo.ImgurGallery
-import com.bigman212.imgur.remote.pojo.StandardListResponse
+import com.bigman212.imgur.data.ImgurGalleryRepository
+import com.bigman212.imgur.data.ImgurGallerySection
+import com.bigman212.imgur.data.remote.pojo.ImgurGallery
+import com.bigman212.imgur.data.remote.pojo.StandardListResponse
 import io.reactivex.Single
 import javax.inject.Inject
 
