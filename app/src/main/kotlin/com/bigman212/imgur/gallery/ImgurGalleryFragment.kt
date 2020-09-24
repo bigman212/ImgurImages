@@ -30,7 +30,9 @@ class ImgurGalleryFragment @Inject constructor(
     private val viewModel by viewModelWithProvider { viewModelProvider.get() }
 
     private val section = Section()
-    private val adapter = GroupAdapter<GroupieViewHolder>()
+    private val adapter = GroupAdapter<GroupieViewHolder>().apply {
+        add(section)
+    }
 
     override fun onAttach(context: Context) {
         (appComponent as AppComponent).inject(this)
@@ -41,12 +43,10 @@ class ImgurGalleryFragment @Inject constructor(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.rvImgurImages.adapter = adapter
-        adapter.add(section)
-
         observe(viewModel.viewState, ::renderState)
-
         viewModel.fetchImgurGalleryWithImages()
     }
+
 
     private fun renderState(state: ImgurGalleryViewModel.State) {
         when (state) {
