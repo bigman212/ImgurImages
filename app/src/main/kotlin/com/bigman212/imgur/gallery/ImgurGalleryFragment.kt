@@ -10,9 +10,9 @@ import com.bigman212.imgur.common.viewBinding
 import com.bigman212.imgur.common.viewModelWithProvider
 import com.bigman212.imgur.databinding.FragmentImgurImagesListBinding
 import com.bigman212.imgur.di.AppComponent
-import com.bigman212.imgur.gallery.adapter.ImgurGalleryImageItem
+import com.bigman212.imgur.gallery.adapter.ImgurGalleryItem
 import com.bigman212.imgur.remote.ImgurApi
-import com.bigman212.imgur.remote.pojo.ImgurImageInfo
+import com.bigman212.imgur.remote.pojo.ImgurGallery
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
@@ -59,7 +59,12 @@ class ImgurGalleryFragment @Inject constructor(
     }
 
 
-    private fun renderContent(content: List<ImgurImageInfo>) {
-        section.update(content.map(::ImgurGalleryImageItem))
+    private fun renderContent(content: List<ImgurGallery>) {
+        section.update(content.map { ImgurGalleryItem(it, ::onImgurGalleryClicked) })
+    }
+
+    private fun onImgurGalleryClicked(gallery: ImgurGallery) {
+        val directions = ImgurGalleryFragmentDirections.toImgurGalleryImageFragment(gallery.id)
+        navigateTo(directions)
     }
 }

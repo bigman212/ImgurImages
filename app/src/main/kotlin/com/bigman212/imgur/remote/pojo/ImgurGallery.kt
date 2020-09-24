@@ -5,10 +5,10 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class ImgurGallery(
-//    @field:Json(name = "id")
-//    val id: String,
-//    @field:Json(name = "title")
-//    val title: String,
+    @field:Json(name = "id")
+    val id: String,
+    @field:Json(name = "title")
+    val title: String,
 //    @field:Json(name = "description")
 //    val description: Any?,
 //    @field:Json(name = "datetime")
@@ -29,8 +29,8 @@ data class ImgurGallery(
 //    val layout: String?,
 //    @field:Json(name = "views")
 //    val views: Int,
-//    @field:Json(name = "link")
-//    val link: String,
+    @field:Json(name = "link")
+    val link: String,
 //    @field:Json(name = "ups")
 //    val ups: Int,
 //    @field:Json(name = "downs")

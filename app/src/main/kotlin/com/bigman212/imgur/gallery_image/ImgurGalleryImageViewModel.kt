@@ -1,21 +1,22 @@
-package com.bigman212.imgur.gallery
+package com.bigman212.imgur.gallery_image
 
 import androidx.lifecycle.MutableLiveData
 import com.bigman212.imgur.common.BaseViewModel
 import com.bigman212.imgur.common.extensions.ioSubscribe
 import com.bigman212.imgur.common.extensions.uiObserve
-import com.bigman212.imgur.gallery.domain.ImgurGalleryUseCase
-import com.bigman212.imgur.remote.pojo.ImgurGallery
+import com.bigman212.imgur.remote.ImgurApi
+import com.bigman212.imgur.remote.pojo.GalleryComment
+import io.reactivex.Observable
 import timber.log.Timber
 import javax.inject.Inject
 
-class ImgurGalleryViewModel @Inject constructor(
-    private val useCase: ImgurGalleryUseCase
+class ImgurGalleryImageViewModel @Inject constructor(
+    private val api: ImgurApi
 ) : BaseViewModel() {
 
     sealed class State {
         object Loading : State()
-        data class Content(val data: List<ImgurGallery>) : State()
+        data class Content(val data: List<GalleryComment>) : State()
         data class Error(val error: Throwable) : State()
 
         companion object {
@@ -25,10 +26,12 @@ class ImgurGalleryViewModel @Inject constructor(
 
     val viewState: MutableLiveData<State> = MutableLiveData(State.initial())
 
-    fun fetchImgurGalleryWithImages() {
-        useCase.getTopImgurGallery()
+    fun fetchGalleryImage(hash: String) {
+        api.fetchGalleryOrImageComments(hash)
             .doOnSubscribe { viewState.postValue(State.Loading) }
-            .map { dataToViewContent(it.data) }
+            .flatMapObservable { Observable.fromIterable(it.data) }
+            .take(20)
+            .toList()
             .ioSubscribe()
             .uiObserve()
             .subscribe(
@@ -36,17 +39,10 @@ class ImgurGalleryViewModel @Inject constructor(
                     viewState.value = State.Content(it)
                 },
                 {
-                    Timber.e(it)
                     viewState.value = State.Error(it)
-                })
+                    Timber.e(it)
+                }
+            )
             .disposeOnCleared()
     }
-
-    private fun dataToViewContent(data: List<ImgurGallery>): List<ImgurGallery> {
-        return data
-            .asSequence()
-            .filter { it.images != null && it.images.isNotEmpty() }
-            .toList()
-    }
-
 }
