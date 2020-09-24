@@ -12,6 +12,9 @@ import com.bigman212.imgur.common.viewModelWithProvider
 import com.bigman212.imgur.databinding.FragmentGalleryDetailedImageBinding
 import com.bigman212.imgur.di.AppComponent
 import com.bigman212.imgur.gallery_image.adapter.ImgurGalleryCommentItem
+import com.bigman212.imgur.remote.pojo.GalleryComment
+import com.bigman212.imgur.remote.pojo.ImgurGallery
+import com.bumptech.glide.Glide
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
@@ -53,16 +56,25 @@ class ImgurGalleryImageFragment @Inject constructor(
 
     private fun renderState(state: ImgurGalleryImageViewModel.State) {
         when (state) {
-            is ImgurGalleryImageViewModel.State.Content -> {
-                section.update(state.data.map(::ImgurGalleryCommentItem))
-            }
+            is ImgurGalleryImageViewModel.State.Content -> renderContent(state.galleryData, state.commentData)
             ImgurGalleryImageViewModel.State.Loading -> {
 
             }
-            is ImgurGalleryImageViewModel.State.Error -> {
-                Timber.e(state.error)
-            }
+            is ImgurGalleryImageViewModel.State.Error -> Timber.e(state.error)
         }
+    }
+
+    private fun renderContent(gallery: ImgurGallery, comments: List<GalleryComment>) {
+        val imageToShow = gallery.images!!.first()
+        Glide.with(binding.root)
+            .load(imageToShow.link)
+            .override(imageToShow.width, imageToShow.height)
+            .into(binding.imgGalleryDetailedImage)
+
+        binding.tvGalleryImageDetailedUpvotes.text = "+ ${gallery.ups}"
+        binding.tvGalleryDetailedImageDownvotes.text = "- ${gallery.downs}"
+
+        section.update(comments.map(::ImgurGalleryCommentItem))
     }
 
 }

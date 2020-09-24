@@ -1,6 +1,9 @@
 package com.bigman212.imgur.remote
 
-import com.bigman212.imgur.remote.pojo.*
+import com.bigman212.imgur.remote.pojo.GalleryComment
+import com.bigman212.imgur.remote.pojo.ImgurGallery
+import com.bigman212.imgur.remote.pojo.StandardListResponse
+import com.bigman212.imgur.remote.pojo.StandardResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -16,12 +19,12 @@ interface ImgurApi {
         @Query("showViral") showViral: Boolean = true,
     ): Single<StandardListResponse<ImgurGallery>>
 
-    @GET("image/{galleryImageHash}")
-    fun fetchGalleryImage(@Path("galleryImageHash") imageHash: String)
-            : Single<StandardResponse<ImgurImageInfo>>
+    @GET("gallery/{galleryHash}")
+    fun fetchGalleryByHash(@Path("galleryHash") galleryHash: String)
+            : Single<StandardResponse<ImgurGallery>>
 
     @GET("gallery/{galleryHash}/comments/top")
-    fun fetchGalleryOrImageComments(@Path("galleryHash") hash: String)
+    fun fetchGalleryComments(@Path("galleryHash") hash: String)
             : Single<StandardListResponse<GalleryComment>>
 
 }

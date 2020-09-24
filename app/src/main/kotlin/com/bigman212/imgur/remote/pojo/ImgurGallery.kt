@@ -31,10 +31,10 @@ data class ImgurGallery(
 //    val views: Int,
     @field:Json(name = "link")
     val link: String,
-//    @field:Json(name = "ups")
-//    val ups: Int,
-//    @field:Json(name = "downs")
-//    val downs: Int,
+    @field:Json(name = "ups")
+    val ups: Int,
+    @field:Json(name = "downs")
+    val downs: Int,
 //    @field:Json(name = "points")
 //    val points: Int,
 //    @field:Json(name = "score")

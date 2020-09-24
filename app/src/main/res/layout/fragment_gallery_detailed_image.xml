@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/img_gallery_detailed_image_yes"
+        android:id="@+id/img_gallery_detailed_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toStartOf="@+id/tv_gallery_detailed_image_downvotes"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_gallery_detailed_image_yes" />
+        app:layout_constraintTop_toBottomOf="@+id/img_gallery_detailed_image" />
 
     <TextView
         android:id="@+id/tv_gallery_detailed_image_downvotes"
@@ -58,5 +58,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_gallery_image_detailed_upvotes"
-        app:layout_constraintTop_toBottomOf="@+id/img_gallery_detailed_image_yes" />
+        app:layout_constraintTop_toBottomOf="@+id/img_gallery_detailed_image" />
 </androidx.constraintlayout.widget.ConstraintLayout>

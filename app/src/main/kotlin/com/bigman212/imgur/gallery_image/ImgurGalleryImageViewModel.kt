@@ -4,39 +4,40 @@ import androidx.lifecycle.MutableLiveData
 import com.bigman212.imgur.common.BaseViewModel
 import com.bigman212.imgur.common.extensions.ioSubscribe
 import com.bigman212.imgur.common.extensions.uiObserve
-import com.bigman212.imgur.remote.ImgurApi
+import com.bigman212.imgur.gallery_image.domain.ImgurGalleryImageUseCase
 import com.bigman212.imgur.remote.pojo.GalleryComment
-import io.reactivex.Observable
+import com.bigman212.imgur.remote.pojo.ImgurGallery
+import io.reactivex.Single
 import timber.log.Timber
 import javax.inject.Inject
 
 class ImgurGalleryImageViewModel @Inject constructor(
-    private val api: ImgurApi
+    private val useCase: ImgurGalleryImageUseCase
 ) : BaseViewModel() {
 
     sealed class State {
         object Loading : State()
-        data class Content(val data: List<GalleryComment>) : State()
+        data class Content(val galleryData: ImgurGallery, val commentData: List<GalleryComment>) : State()
         data class Error(val error: Throwable) : State()
 
         companion object {
-            fun initial() = Content(listOf())
+            fun initial() = Loading
         }
     }
 
     val viewState: MutableLiveData<State> = MutableLiveData(State.initial())
 
     fun fetchGalleryImage(hash: String) {
-        api.fetchGalleryOrImageComments(hash)
-            .doOnSubscribe { viewState.postValue(State.Loading) }
-            .flatMapObservable { Observable.fromIterable(it.data) }
-            .take(20)
-            .toList()
+        Single.zip(
+            useCase.fetchGalleryByHash(hash),
+            useCase.fetchGalleryCommentByGalleryHash(hash)
+        )
+        { gallery, comments -> gallery to comments.take(20) }
             .ioSubscribe()
             .uiObserve()
             .subscribe(
                 {
-                    viewState.value = State.Content(it)
+                    viewState.value = State.Content(it.first, it.second)
                 },
                 {
                     viewState.value = State.Error(it)
