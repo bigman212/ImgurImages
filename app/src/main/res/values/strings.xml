@@ -2,4 +2,7 @@
     <string name="app_name">ImgurImages</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="gallery_image_detailed_comments_title">Comments</string>
+    <string name="gallery_detailed_image_upvotes_value">+ %d</string>
+    <string name="gallery_detailed_image_downvotes_value">- %d</string>
 </resources>

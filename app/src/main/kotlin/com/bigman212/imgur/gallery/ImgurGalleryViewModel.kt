@@ -14,7 +14,6 @@ class ImgurGalleryViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     sealed class State {
-        object Loading : State()
         data class Content(val data: List<ImgurGallery>) : State()
         data class Error(val error: Throwable) : State()
 
@@ -27,7 +26,6 @@ class ImgurGalleryViewModel @Inject constructor(
 
     fun fetchImgurGalleryWithImages() {
         useCase.getTopImgurGallery()
-            .doOnSubscribe { viewState.postValue(State.Loading) }
             .map { dataToViewContent(it.data) }
             .ioSubscribe()
             .uiObserve()

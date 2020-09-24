@@ -50,9 +50,6 @@ class ImgurGalleryFragment @Inject constructor(
 
     private fun renderState(state: ImgurGalleryViewModel.State) {
         when (state) {
-            ImgurGalleryViewModel.State.Loading -> {
-
-            }
             is ImgurGalleryViewModel.State.Content -> renderContent(state.data)
             is ImgurGalleryViewModel.State.Error -> showMessage(state.error.message ?: state.error.toString())
         }

@@ -3,7 +3,10 @@ package com.bigman212.imgur.gallery_image
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.NavigationUI
 import com.bigman212.imgur.BaseFragment
 import com.bigman212.imgur.R
 import com.bigman212.imgur.common.observe
@@ -18,7 +21,6 @@ import com.bumptech.glide.Glide
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
-import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Provider
 
@@ -33,7 +35,9 @@ class ImgurGalleryImageFragment @Inject constructor(
     private val args: ImgurGalleryImageFragmentArgs by navArgs()
 
     private val section = Section()
-    private val adapter = GroupAdapter<GroupieViewHolder>()
+    private val adapter = GroupAdapter<GroupieViewHolder>().apply {
+        add(section)
+    }
 
     override fun onAttach(context: Context) {
         (appComponent as AppComponent).inject(this)
@@ -44,9 +48,10 @@ class ImgurGalleryImageFragment @Inject constructor(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.rvGalleryDetailedImageComments.adapter = adapter
+        NavigationUI.setupWithNavController(binding.toolbarGalleryImage, findNavController())
+        binding.toolbarGalleryImage.title = ""
 
-        adapter.add(section)
+        binding.rvGalleryDetailedImageComments.adapter = adapter
 
         val hash = args.clickedGalleryHash
         observe(viewModel.viewState, ::renderState)
@@ -55,24 +60,26 @@ class ImgurGalleryImageFragment @Inject constructor(
     }
 
     private fun renderState(state: ImgurGalleryImageViewModel.State) {
+        binding.pbImageLoading.isVisible = state is ImgurGalleryImageViewModel.State.Loading
         when (state) {
             is ImgurGalleryImageViewModel.State.Content -> renderContent(state.galleryData, state.commentData)
-            ImgurGalleryImageViewModel.State.Loading -> {
-
-            }
-            is ImgurGalleryImageViewModel.State.Error -> Timber.e(state.error)
+            is ImgurGalleryImageViewModel.State.Error -> showMessage(state.error.message ?: state.error.toString())
         }
     }
 
     private fun renderContent(gallery: ImgurGallery, comments: List<GalleryComment>) {
+        binding.tvGalleryImageTitle.text = gallery.title
+
         val imageToShow = gallery.images!!.first()
         Glide.with(binding.root)
             .load(imageToShow.link)
             .override(imageToShow.width, imageToShow.height)
             .into(binding.imgGalleryDetailedImage)
 
-        binding.tvGalleryImageDetailedUpvotes.text = "+ ${gallery.ups}"
-        binding.tvGalleryDetailedImageDownvotes.text = "- ${gallery.downs}"
+        binding.tvGalleryImageDetailedUpvotes.text =
+            getString(R.string.gallery_detailed_image_upvotes_value, gallery.ups)
+        binding.tvGalleryDetailedImageDownvotes.text =
+            getString(R.string.gallery_detailed_image_downvotes_value, gallery.downs)
 
         section.update(comments.map(::ImgurGalleryCommentItem))
     }
