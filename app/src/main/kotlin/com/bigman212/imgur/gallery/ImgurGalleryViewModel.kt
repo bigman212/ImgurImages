@@ -1,12 +1,11 @@
 package com.bigman212.imgur.gallery
 
 import androidx.lifecycle.MutableLiveData
-import com.bigman212.imgur.common.BaseViewModel
+import com.bigman212.imgur.common.base.BaseViewModel
 import com.bigman212.imgur.common.extensions.ioSubscribe
 import com.bigman212.imgur.common.extensions.uiObserve
+import com.bigman212.imgur.data.remote.pojo.ImgurGallery
 import com.bigman212.imgur.gallery.domain.ImgurGalleryUseCase
-import com.bigman212.imgur.remote.pojo.ImgurGallery
-import com.bigman212.imgur.remote.pojo.ImgurImageInfo
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -15,8 +14,7 @@ class ImgurGalleryViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     sealed class State {
-        object Loading : State()
-        data class Content(val data: List<ImgurImageInfo>) : State()
+        data class Content(val data: List<ImgurGallery>) : State()
         data class Error(val error: Throwable) : State()
 
         companion object {
@@ -28,7 +26,6 @@ class ImgurGalleryViewModel @Inject constructor(
 
     fun fetchImgurGalleryWithImages() {
         useCase.getTopImgurGallery()
-            .doOnSubscribe { viewState.postValue(State.Loading) }
             .map { dataToViewContent(it.data) }
             .ioSubscribe()
             .uiObserve()
@@ -43,12 +40,11 @@ class ImgurGalleryViewModel @Inject constructor(
             .disposeOnCleared()
     }
 
-    private fun dataToViewContent(data: List<ImgurGallery>): List<ImgurImageInfo> {
+    private fun dataToViewContent(data: List<ImgurGallery>): List<ImgurGallery> {
         return data
             .asSequence()
-            .map(ImgurGallery::images)
-            .filter { it != null }
-            .reduce { acc, list -> acc!! + list!! }!!
+            .filter { it.images != null && it.images.isNotEmpty() }
+            .toList()
     }
 
 }
